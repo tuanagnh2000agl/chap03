@@ -76,11 +76,11 @@
                                     <div class="c-listpost__info">
                                         <span class="datepost"><?php echo get_the_date(); ?></span>
                                         <span class="cat">
-                                            <i class="c-dotcat" style="background-color: #1bb7c5"></i>
+                                            <i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
                                             <a href="<?php the_permalink() ?>"><?php echo get_the_category()[0]->name; ?></a>
                                         </span>
                                     </div>
-                                    <h3 class="titlepost"><a href="sua link lai"><?php the_title(); ?></a></h3>
+                                    <h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
                                 </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
@@ -101,11 +101,11 @@
                                 <div class="c-listpost__info">
                                     <span class="datepost"><?php the_date(); ?></span>
                                     <span class="cat">
-                                        <i class="c-dotcat" style="background-color: #1bb7c5"></i>
+                                        <i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
                                         <a href="<?php the_permalink() ?>"><?php echo get_the_category()[0]->name; ?></a>
                                     </span>
                                 </div>
-                                <h3 class="titlepost"><a href="sua link lai"><?php the_title(); ?></a></h3>
+                                <h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
                             </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
@@ -126,11 +126,11 @@
                                     <div class="c-listpost__info">
                                         <span class="datepost"><?php the_date(); ?></span>
                                         <span class="cat">
-                                            <i class="c-dotcat" style="background-color: #d6772a"></i>
+                                            <i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
                                             <a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
                                         </span>
                                     </div>
-                                    <h3 class="titlepost"><a href="sua link lai"><?php the_title(); ?></a></h3>
+                                    <h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
                                 </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
@@ -151,11 +151,11 @@
                                     <div class="c-listpost__info">
                                         <span class="datepost"><?php the_date(); ?></span>
                                         <span class="cat">
-                                            <i class="c-dotcat" style="background-color: #c4a021"></i>
+                                            <i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
                                             <a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
                                         </span>
                                     </div>
-                                    <h3 class="titlepost"><a href="sua link lai"><?php the_title(); ?></a></h3>
+                                    <h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
                                 </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
@@ -176,11 +176,11 @@
                                     <div class="c-listpost__info">
                                         <span class="datepost"><?php the_date(); ?></span>
                                         <span class="cat">
-                                            <i class="c-dotcat" style="background-color: #416ad3"></i>
+                                            <i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
                                             <a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
                                         </span>
                                     </div>
-                                    <h3 class="titlepost"><a href="sua link lai"><?php the_title(); ?></a></h3>
+                                    <h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
                                 </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
@@ -201,18 +201,18 @@
                                 <div class="c-listpost__info">
                                     <span class="datepost"><?php the_date(); ?></span>
                                     <span class="cat">
-                                        <i class="c-dotcat" style="background-color: #ccc"></i>
+                                        <i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
                                         <a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
                                     </span>
                                 </div>
-                                <h3 class="titlepost"><a href="sua link lai"><?php the_title(); ?></a></h3>
+                                <h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
                             </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
                 </div>
                 <div class="l-btn">
                     <div class="c-btn c-btn--small">
-                        <a href="news.html">ニュース一覧を見る</a>
+                        <a href="<?php bloginfo('url') ?>/news">ニュース一覧を見る</a>
                     </div>
                 </div>
             </div>

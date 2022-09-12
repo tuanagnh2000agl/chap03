@@ -491,7 +491,10 @@ Component
 .c-gridpost .datepost {
   font-size: 1.2rem;
   font-weight: bold;
- 
+}
+span.datepost {
+  display: inline-block;
+  width: 110px;
 }
 .c-gridpost .price {
   padding: 10px 0;
@@ -794,6 +797,7 @@ Project
 
 .p-news .feature_img {
   margin: 30px auto;
+  text-align: center;
 }
 
 .p-news__content {
@@ -1359,4 +1363,22 @@ Utity
 
 .u-bborder {
   border-bottom: 1px solid #ccc;
+}
+.is-hidden:hover{
+  cursor: pointer;
+}
+/* hidden content */
+.u-hidden__content{
+  display: none;
+}
+
+/* custom pagination */
+
+.page-numbers.current{
+    display: inline-block;
+    width: 45px;
+    line-height: 45px;
+    margin: 0 5px;
+    background: #0078d2;
+    color: #fff;
 }

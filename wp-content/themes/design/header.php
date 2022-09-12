@@ -10,12 +10,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/assets/css/style.css">
+    <link rel="shortcut icon" href="<?php bloginfo('template_directory') ?>/assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
     <header class="c-header">
         <div class="l-container">
-            <h1 class="c-logo"><a href="index.html"><img src="<?php bloginfo('template_directory') ?>/assets/img/logo.png" alt="Allgrow Labo"></a></h1>
+            <h1 class="c-logo"><a href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_directory') ?>/assets/img/logo.png" alt="Allgrow Labo"></a></h1>
             <nav class="c-gnav">
                 <ul>
                     <li><a href="service.html">サービス</a></li>
@@ -25,3 +26,4 @@
             </nav>
         </div>
     </header><!-- /header -->
+    <?php wp_head(); ?>

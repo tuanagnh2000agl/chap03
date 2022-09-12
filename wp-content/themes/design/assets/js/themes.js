@@ -28,4 +28,8 @@ $(document).ready(function(){
         $('.c-listpost').not('#'+showContent).hide();
     });
 
+    $('.u-center.is-hidden').click(function(){
+       $('.u-hidden__content').fadeToggle();
+    })
+
 });
