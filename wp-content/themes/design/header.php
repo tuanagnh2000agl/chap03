@@ -19,7 +19,7 @@
             <h1 class="c-logo"><a href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_directory') ?>/assets/img/logo.png" alt="Allgrow Labo"></a></h1>
             <nav class="c-gnav">
                 <ul>
-                    <li><a href="service.html">サービス</a></li>
+                    <li><a href="<?php bloginfo('url') ?>/service">サービス</a></li>
                     <li><a href="publish.html">出版物</a></li>
                     <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>

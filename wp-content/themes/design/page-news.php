@@ -2,8 +2,7 @@
     <main class="p-news">
         <div class="c-breadcrumb">
             <div class="l-container">
-                <a href="index.html">Home</a>
-                <span>ニュース・お知らせ</span>
+				<div class="breadcrumb"><?php get_breadcrumb(); ?></div>
             </div>
         </div>
         <div class="c-headpage">
@@ -28,171 +27,227 @@
                 </ul>
                 <div class="c-tabs__content">
                     <ul class="c-listpost active" id="すべて">
-						<?php 
-								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-								$args = array(
-									'post_status' => 'publish',
-									'post_type' => 'post', 
-									'posts_per_page' => 5,
-									'paged' => $paged
-								);
-								?>
-								<?php $getposts = new WP_query($args); ?>
-								<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-								<?php while ($getposts->have_posts()) : $getposts->the_post();?>
-									<li class="c-listpost__item">
-										<div class="c-listpost__info">
-											<span class="datepost"><?php echo get_the_date(); ?></span>
-											<span class="cat">
-												<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
-												<a href="<?php the_permalink() ?>"><?php echo get_the_category()[0]->name; ?></a>
-											</span>
-										</div>
-										<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
-									</li>
-                        <?php endwhile; wp_reset_postdata(); ?>
+						<?php
+							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+							$args = [
+								'post_type' => 'post',
+								'post_status' => 'publish',
+								'posts_per_page'=> 5,
+								'paged' => $paged
+
+							];
+							$the_query = new WP_Query( $args );
+							?>
+							<?php global $wp_query; $wp_query->in_the_loop = true; ?>
+							<?php
+								// The Loop
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+							?>
+								<li class="c-listpost__item">
+									<div class="c-listpost__info">
+										<span class="datepost"><?= get_the_date()  ?></span>
+										<?php
+										$cats = get_the_category(get_the_ID());
+											foreach ($cats as $cat) {
+										?>
+										<span class="cat">
+											<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
+											<a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+										</span>
+										<?php } ?>
+									</div>
+									<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
+								</li>
+                        <?php endwhile; wp_reset_postdata(); ?> 
                         <div class="c-pagination">
-							<?php pagination_bar($getposts);?>
+							<?php pagination_bar($the_query);?>
                         </div>
                     </ul>
                     <ul class="c-listpost" id="お知らせ">
-						<?php 
+						<?php
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-							$args = array(
+							$args = [
+								'post_type' => 'post',
 								'post_status' => 'publish',
-								'post_type' => 'post', 
-								'posts_per_page' => 5,
-								'cat'	=>7,
+								'posts_per_page'=> 5,
+								'cat' 	=> 7,
 								'paged' => $paged
-							);
+
+							];
+							$the_query = new WP_Query( $args );
 							?>
-							<?php $getposts = new WP_query($args); ?>
 							<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-							<?php while ($getposts->have_posts()) : $getposts->the_post();?>
-								<li class="c-listpost__item">
-									<div class="c-listpost__info">
-										<span class="datepost"><?php echo get_the_date(); ?></span>
-										<span class="cat">
-											<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
-											<a href="<?php the_permalink() ?>"><?php echo get_the_category()[0]->name; ?></a>
-										</span>
-									</div>
-									<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
-								</li>
-						<?php endwhile; wp_reset_postdata(); ?>
+							<?php
+								// The Loop
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+							?>
+							<li class="c-listpost__item">
+								<div class="c-listpost__info">
+									<span class="datepost"><?= get_the_date()  ?></span>
+									<?php
+									$cats = get_the_category(get_the_ID());
+										foreach ($cats as $cat) {
+									?>
+									<span class="cat">
+										<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
+										<a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+									</span>
+									<?php } ?>
+								</div>
+								<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
+							</li>
+                        <?php endwhile; wp_reset_postdata(); ?> 
                         <div class="c-pagination">
-							<?php pagination_bar($getposts);?>
+							<?php pagination_bar($the_query);?>
                         </div>
                     </ul>
                     <ul class="c-listpost" id="税の最新情報">
-						<?php 
+						<?php
 								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-								$args = array(
+								$args = [
+									'post_type' => 'post',
 									'post_status' => 'publish',
-									'post_type' => 'post', 
-									'posts_per_page' => 5,
-									'cat'	=>8,
+									'posts_per_page'=> 5,
+									'cat' => 8,
 									'paged' => $paged
-								);
+								];
+								$the_query = new WP_Query( $args );
 								?>
-								<?php $getposts = new WP_query($args); ?>
 								<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-								<?php while ($getposts->have_posts()) : $getposts->the_post();?>
+								<?php
+									// The Loop
+									while ( $the_query->have_posts() ) : $the_query->the_post();
+								?>
 									<li class="c-listpost__item">
 										<div class="c-listpost__info">
-											<span class="datepost"><?php echo get_the_date(); ?></span>
+											<span class="datepost"><?= get_the_date()  ?></span>
+											<?php
+											$cats = get_the_category(get_the_ID());
+												foreach ($cats as $cat) {
+											?>
 											<span class="cat">
 												<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
-												<a href="<?php the_permalink() ?>"><?php echo get_the_category()[0]->name; ?></a>
+												<a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
 											</span>
+											<?php } ?>
 										</div>
 										<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
 									</li>
-						<?php endwhile; wp_reset_postdata(); ?>
+                        <?php endwhile; wp_reset_postdata(); ?> 
                         <div class="c-pagination">
-							<?php pagination_bar($getposts);?>
+							<?php pagination_bar($the_query);?>
                         </div>
                     </ul>
                     <ul class="c-listpost" id="税制改正">
-						<?php 
-								$args = array(
-									'post_status' => 'publish',
-									'post_type' => 'post', 
-									'showposts' => 5, 
-									'cat'       => 9
-								);
-								?>
-								<?php $getposts = new WP_query($args); ?>
-								<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-								<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
-									<li class="c-listpost__item">
-										<div class="c-listpost__info">
-											<span class="datepost"><?php the_date(); ?></span>
-											<span class="cat">
-												<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
-												<a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
-											</span>
-										</div>
-										<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
-									</li>
-                        <?php endwhile; wp_reset_postdata(); ?>
+						<?php
+							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+							$args = [
+								'post_type' => 'post',
+								'post_status' => 'publish',
+								'posts_per_page'=> 5,
+								'cat' 	=> 9,
+								'paged' => $paged
+							];
+							$the_query = new WP_Query( $args );
+							?>
+							<?php global $wp_query; $wp_query->in_the_loop = true; ?>
+							<?php
+								// The Loop
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+							?>
+							<li class="c-listpost__item">
+								<div class="c-listpost__info">
+									<span class="datepost"><?= get_the_date()  ?></span>
+									<?php
+									$cats = get_the_category(get_the_ID());
+										foreach ($cats as $cat) {
+									?>
+									<span class="cat">
+										<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
+										<a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+									</span>
+									<?php } ?>
+								</div>
+								<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
+							</li>
+                        <?php endwhile; wp_reset_postdata(); ?> 
                         <div class="c-pagination">
-							<?php //pagination_bar($the_query);?>
+							<?php pagination_bar($the_query);?>
                         </div>
                     </ul>
                     <ul class="c-listpost" id="掲載情報">
-						<?php 
-							$args = array(
+						<?php
+							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+							$args = [
+								'post_type' => 'post',
 								'post_status' => 'publish',
-								'post_type' => 'post', 
-								'showposts' => 5, 
-								'cat'       => 10,
-							);
+								'posts_per_page'=> 5,
+								'cat' 	=> 10,
+								'paged' => $paged
+							];
+							$the_query = new WP_Query( $args );
 							?>
-							<?php $getposts = new WP_query($args); ?>
 							<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-							<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
-								<li class="c-listpost__item">
-									<div class="c-listpost__info">
-										<span class="datepost"><?php the_date(); ?></span>
-										<span class="cat">
-											<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
-											<a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
-										</span>
-									</div>
-									<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
-								</li>
-                        <?php endwhile; wp_reset_postdata(); ?>
+							<?php
+								// The Loop
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+							?>
+							<li class="c-listpost__item">
+								<div class="c-listpost__info">
+									<span class="datepost"><?= get_the_date()  ?></span>
+									<?php
+									$cats = get_the_category(get_the_ID());
+										foreach ($cats as $cat) {
+									?>
+									<span class="cat">
+										<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
+										<a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+									</span>
+									<?php } ?>
+								</div>
+								<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
+							</li>
+                        <?php endwhile; wp_reset_postdata(); ?> 
                         <div class="c-pagination">
-							<?php //pagination_bar($the_query);?>
+							<?php pagination_bar($the_query);?>
                         </div>
                     </ul>
                     <ul class="c-listpost" id="バックナンバー">
-						<?php 
-							$args = array(
+						<?php
+							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+							$args = [
+								'post_type' => 'post',
 								'post_status' => 'publish',
-								'post_type' => 'post', 
-								'showposts' => 5, 
-								'cat'       => 11,
-							);
+								'posts_per_page'=> 5,
+								'cat' 	=> 11,
+								'paged' => $paged
+							];
+							$the_query = new WP_Query( $args );
 							?>
-							<?php $getposts = new WP_query($args); ?>
 							<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-							<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
-								<li class="c-listpost__item">
-									<div class="c-listpost__info">
-										<span class="datepost"><?php the_date(); ?></span>
-										<span class="cat">
-											<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>"></i>
-											<a href="<?php the_permalink(); ?>"><?php echo get_the_category()[0]->name; ?></a>
-										</span>
-									</div>
-									<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
-								</li>
-                        <?php endwhile; wp_reset_postdata(); ?>
-                       	<div class="c-pagination">
-					   		<?php //pagination_bar($the_query);?>
-                        </div> 
+							<?php
+								// The Loop
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+							?>
+							<li class="c-listpost__item">
+								<div class="c-listpost__info">
+									<span class="datepost"><?= get_the_date()  ?></span>
+									<?php
+									$cats = get_the_category(get_the_ID());
+										foreach ($cats as $cat) {
+									?>
+									<span class="cat">
+										<i class="c-dotcat" style="background:<?php echo get_the_category()[0]->description ?>;"></i>
+										<a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+									</span>
+									<?php } ?>
+								</div>
+								<h3 class="titlepost"><a href="<?= get_the_permalink() ?>"><?php the_title(); ?></a></h3>
+							</li>
+                        <?php endwhile; wp_reset_postdata(); ?> 
+                        <div class="c-pagination">
+							<?php pagination_bar($the_query);?>
+                        </div>
                     </ul>
                 </div>
             </div>

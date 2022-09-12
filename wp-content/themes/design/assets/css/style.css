@@ -549,17 +549,17 @@ span.datepost {
   color: #fff;
 }
 
-.c-breadcrumb a + a:before {
+/* .c-breadcrumb a + a:before {
   content: "\f105";
   font-family: "fontAwesome";
   padding: 0 10px;
-}
-
+} */
+/* 
 .c-breadcrumb span:before {
   content: "\f105";
   font-family: "fontAwesome";
   padding: 0 10px;
-}
+} */
 
 /* head subpage
 --------------------------------------------------------------*/

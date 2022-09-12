@@ -12,7 +12,7 @@
 	<div class="p-news__content">
 		<div class="l-container">
 			<div class="feature_img">
-            <?php echo get_the_post_thumbnail( $post_id, 'home-thumb', array( 'class' =>'thumnail') ); ?>
+                <?php echo get_the_post_thumbnail( $post_id, 'home-thumb', array( 'class' =>'thumnail') ); ?>
 			</div>
 			<div class="c-ttlpostpage">
 				<h2><?php the_title(); ?></h2>
@@ -24,14 +24,11 @@
 			</div>
 
 			<div class="single__content">
-				<p><?php the_excerpt(); ?></p>
-
+				<?php the_excerpt(); ?>
 				<p class="u-center is-hidden">▽▽詳細はこちら▽▽</p>
-
                 <div class="u-hidden__content">
                     <?php the_content() ?>
                 </div>
-                  
 				<p class="u-center u-bborder">さあ、顧問先育成型会計事務所へ！~業務改善をもたらすMAS指導の実際~</p>
 			</div>
 
