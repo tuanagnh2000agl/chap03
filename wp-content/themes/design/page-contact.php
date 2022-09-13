@@ -68,7 +68,7 @@
 						<input type="reset" name="" value="リセット">
 					</div>
 					<div class="c-btn">
-						<a href="<?php bloginfo('template_directory') ?>/contact/confirm">入力内容を確認する</a>
+						<a href="<?php bloginfo('url') ?>/contact/confirm">入力内容を確認する</a>
 					</div>
 				</div>
 			</form>

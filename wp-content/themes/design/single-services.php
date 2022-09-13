@@ -86,7 +86,6 @@
                 </li>
             </ul>
                 </div>
-
                 <div class="l-btn">
                     <div class="c-btn c-btn--small">
                         <a href="<?php bloginfo('url') ?>/news">ご提供サービス一覧へ</a>

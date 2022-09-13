@@ -2,6 +2,19 @@
 <html>
 
 <head>
+    <?php
+        $title = "sitename";
+        $description = "description";
+        $keyword = "key1,key2";
+        if($pageid=="xxx"){
+            $title = "xxx - sitename";
+            $description = "xxx description";
+            $keyword = "xxx,key1,key2";
+        }
+    ?>
+    <title><?php echo 'Wordpress | Home'; ?></title>
+    <meta name="description" content="<?php echo $description; ?>">
+    <meta name="keywords" content="<?php echo $keyword; ?>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

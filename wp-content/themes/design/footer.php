@@ -7,7 +7,7 @@
         <div class="c-footer__main">
             <div class="l-container">
                 <div class="c-footer__link">
-                    <h3><a href="news.html">ニュース</a></h3>
+                    <h3><a href="<?php bloginfo('url') ?>/news">ニュース</a></h3>
                     <ul class="c-boxlink">
                         <li><a href="#">お知らせ</a></li>
                         <li><a href="#">税の最新情報</a></li>
@@ -27,10 +27,10 @@
 
                 <div class="c-footer__link">
                     <ul class="c-boxlink">
-                        <li><a href="staff.html">スタッフ</a></li>
-                        <li><a href="recruit.html">採用情報</a></li>
-                        <li><a href="privacy.html">プライバシーポリシー</a></li>
-                        <li><a href="sitemap.html">サイトマップ</a></li>
+                        <li><a href="#">スタッフ</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">サイトマップ</a></li>
                     </ul>
                 </div>
             </div>
