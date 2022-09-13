@@ -50,6 +50,52 @@ function product_init() {
 }
 add_action( 'init', 'product_init' );
 
+/* Custom Post Type services */
+function create_posttype() {
+    register_post_type(
+        'services',
+        array(
+            'label' => 'services',
+            'labels' => array(
+                'all_items' => 'services all',
+                'add_new' => 'Add new',
+                'add_new_item' => 'Add new service',
+                'edit_item' => 'Edit',
+                'new_item' => 'new item',
+                'view_item' => 'view',
+                'search_items' => 'search',
+                'not_found' => 'not found',
+                'not_found_in_trash' => 'not found in trash',
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => [ 'title', 'thumbnail', 'editor' ],
+        ));
+    }
+add_action( 'init', 'create_posttype' );
+/* Custom Post Type publish */
+function create_posttype_publish() {
+    register_post_type(
+        'publish',
+        array(
+            'label' => 'publish',
+            'labels' => array(
+                'all_items' => 'publish all',
+                'add_new' => 'Add new',
+                'add_new_item' => 'Add new service',
+                'edit_item' => 'Edit',
+                'new_item' => 'new item',
+                'view_item' => 'view',
+                'search_items' => 'search',
+                'not_found' => 'not found',
+                'not_found_in_trash' => 'not found in trash',
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => [ 'title', 'thumbnail', 'editor' ],
+        ));
+    }
+add_action( 'init', 'create_posttype_publish' );
 // create breadcrumbs
 function get_breadcrumb() {
     echo '<a href="'.home_url().'" rel="nofollow">Home</a>';
@@ -70,7 +116,6 @@ function get_breadcrumb() {
         echo '</em>"';
     }
 }
-
 // add image
 add_theme_support( 'post-thumbnails' );
 
@@ -93,7 +138,6 @@ add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 function wpdocs_theme_setup() {
      add_image_size( 'home-thumb', 1050, 400); 
 }
-
 // pagination
 function pagination_bar($custom_query = null, $paged = null) {
     global $wp_query;
@@ -112,4 +156,11 @@ function pagination_bar($custom_query = null, $paged = null) {
         'total' => $total
     ) );
 }
+// create menu
+function createMenu(){
+    register_nav_menu('header-menu',__( 'Menu main' ));
+}
+add_action('init', 'createMenu');
+
 ?>
+

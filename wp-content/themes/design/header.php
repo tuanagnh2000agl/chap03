@@ -18,11 +18,14 @@
         <div class="l-container">
             <h1 class="c-logo"><a href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_directory') ?>/assets/img/logo.png" alt="Allgrow Labo"></a></h1>
             <nav class="c-gnav">
-                <ul>
-                    <li><a href="<?php bloginfo('url') ?>/service">サービス</a></li>
-                    <li><a href="publish.html">出版物</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
-                </ul>
+                <?php wp_nav_menu( 
+                    array( 
+                        'theme_location' => 'header-menu', 
+                        'container' => 'false', 
+                        'menu_id' => 'c-header-menu', 
+                        'menu_class' => 'c-header-menu'
+                    ) 
+                ); ?>
             </nav>
         </div>
     </header><!-- /header -->

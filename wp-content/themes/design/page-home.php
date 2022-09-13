@@ -290,7 +290,7 @@
             </div>
             <div class="l-btn">
                 <div class="c-btn c-btn--small">
-                    <a href="publish.html">出版物一覧を見る</a>
+                    <a href="<?php bloginfo('url') ?>/publish">出版物一覧を見る</a>
                 </div>
             </div>
         </div>

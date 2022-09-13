@@ -469,12 +469,19 @@ Component
 .c-gridpost__item {
   width: 25%;
   margin-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .c-gridpost__item .c-gridpost__thumb {
   border-right: 1px solid #ccc;
 }
-
+.c-gridpost__item .c-gridpost__thumb img{
+  height: 250px;
+  max-width: 148px;
+  object-fit: cover;
+}
 .c-gridpost__item:nth-child(4n+1) .c-gridpost__thumb {
   border-left: 1px solid #ccc;
 }
@@ -492,10 +499,10 @@ Component
   font-size: 1.2rem;
   font-weight: bold;
 }
-span.datepost {
+/* span.datepost {
   display: inline-block;
   width: 110px;
-}
+} */
 .c-gridpost .price {
   padding: 10px 0;
   font-size: 1.2rem;

@@ -34,7 +34,6 @@
 								'post_status' => 'publish',
 								'posts_per_page'=> 5,
 								'paged' => $paged
-
 							];
 							$the_query = new WP_Query( $args );
 							?>
