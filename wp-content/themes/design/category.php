@@ -14,6 +14,7 @@
             <div class="l-container">
                 <ul class="c-listpost" id="cat_1">
                     <?php
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                         // get ID
                         $category = get_category(get_query_var('cat'));
                         $args = [
@@ -21,6 +22,8 @@
                             'post_status' => 'publish',
                             'posts_per_page'=> 5,
                             'cat' =>  $category->cat_ID,
+							'paged' => $paged,
+
                         ];
                         $the_query = new WP_Query( $args );
                     ?>

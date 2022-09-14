@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <?php
-       echo get_template_part('./assets/meta/meta');
+        get_template_part('./assets/meta/meta');
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
