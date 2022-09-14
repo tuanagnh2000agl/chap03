@@ -31,5 +31,7 @@ $(document).ready(function(){
     $('.u-center.is-hidden').click(function(){
        $('.u-hidden__content').fadeToggle();
     })
-
+    $('#is-click').click(function(){
+        history.back();
+     })
 });

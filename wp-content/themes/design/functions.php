@@ -99,8 +99,12 @@ add_action( 'init', 'create_posttype_publish' );
 // create breadcrumbs
 function get_breadcrumb() {
     echo '<a href="'.home_url().'" rel="nofollow">Home</a>';
-    if (is_category() || is_single()) {
+    if (is_archive() || is_category() || is_single()) {
         echo "&nbsp;&nbsp;&#62;&nbsp;&nbsp;";
+        $ar_title = get_the_archive_title();
+        $ar_title = explode(":",$ar_title);
+        $ar_title = strip_tags($ar_title[1]);
+        echo $ar_title;
         the_category(' &bull; ');
             if (is_single()) {
                 echo " &nbsp;&nbsp;&#62;&nbsp;&nbsp; ";
@@ -109,12 +113,11 @@ function get_breadcrumb() {
     } elseif (is_page()) {
         echo "&nbsp;&nbsp;&#62;&nbsp;&nbsp;";
         echo the_title();
-    } elseif (is_search()) {
-        echo "&nbsp;&nbsp;&#62;&nbsp;&nbsp;Search Results for... ";
-        echo '"<em>';
-        echo the_search_query();
-        echo '</em>"';
     }
+    elseif (is_404()) {
+        echo "&nbsp;&nbsp;&#62;&nbsp;&nbsp;";
+        echo '404';
+    } 
 }
 // add image
 add_theme_support( 'post-thumbnails' );

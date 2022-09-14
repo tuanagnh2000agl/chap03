@@ -29,10 +29,10 @@
             </div>
             <div class="l-btn l-btn--2btn">
                 <div class="c-btn">
-                    <a href="service.html">ひかり税理士法人のサービス一覧を見る</a>
+                    <a href="<?php bloginfo('url') ?>/services">ひかり税理士法人のサービス一覧を見る</a>
                 </div>
                 <div class="c-btn">
-                    <a href="cases.html">ひかり税理士法人の成功事例を見る</a>
+                    <a href="#">ひかり税理士法人の成功事例を見る</a>
                 </div>
             </div>
         </div>
@@ -274,18 +274,31 @@
             </h2>
             <div class="publish__inner">
                 <ul class="c-gridpost">
-                    
-                <?php if( have_rows('gridpost') ): while( have_rows('gridpost') ): the_row(); ?>
-                    <li class="c-gridpost__item">
-                            <a href="#">
-                                <div class="c-gridpost__thumb">
-                                <img src="<?php the_sub_field('image_gridpost'); ?>">
-                                </div>
-                                <p class="datepost"><?php the_sub_field('date'); ?></p>
-                                <h3><?php the_sub_field('desc'); ?></h3>
-                            </a>
-                    </li>
-                <?php endwhile; endif; ?>
+                    <?php
+                        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                        $args = [
+                            'post_type' => 'publish',
+                            'post_status' => 'publish',
+                            'posts_per_page'=> 4,
+                            'paged' => $paged
+
+                        ];
+                        $the_query = new WP_Query( $args );
+                    ?>
+                    <?php global $wp_query; $wp_query->in_the_loop = true; ?>
+                    <?php
+                        while ( $the_query->have_posts() ) : $the_query->the_post();
+                    ?>
+                     <li class="c-gridpost__item">
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="c-gridpost__thumb">
+                                <?php echo get_the_post_thumbnail( $post_id, 'home-thumb', array( 'class' =>'thumnail') ); ?>
+                            </div>
+                            <p class="datepost"><?php the_date(); ?></p>
+                            <h3><?php the_title(); ?></h3>
+                        </a>
+                    </li>  
+                    <?php endwhile; wp_reset_postdata(); ?>                
                 </ul>
             </div>
             <div class="l-btn">
@@ -299,3 +312,4 @@
 <?php
     get_footer();
 ?>
+

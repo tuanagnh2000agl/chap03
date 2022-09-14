@@ -1,28 +1,17 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
 <head>
     <?php
-        $title = "sitename";
-        $description = "description";
-        $keyword = "key1,key2";
-        if($pageid=="xxx"){
-            $title = "xxx - sitename";
-            $description = "xxx description";
-            $keyword = "xxx,key1,key2";
-        }
+       echo get_template_part('./assets/meta/meta');
     ?>
-    <title><?php echo 'Wordpress | Home'; ?></title>
-    <meta name="description" content="<?php echo $description; ?>">
-    <meta name="keywords" content="<?php echo $keyword; ?>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordpress</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/assets/css/404.css">
     <link rel="shortcut icon" href="<?php bloginfo('template_directory') ?>/assets/img/favicon.png" type="image/x-icon">
 </head>
 
