@@ -278,6 +278,11 @@ Component
 .mw_wp_form_preview .l-btn--2btn.u-contact{
   display: none;
 }
+
+/* css hidden infomation from form complete */
+.p-contact > .mw_wp_form_complete > p {
+  display: none;
+}
 /*  */
 .c-btn {
   margin: 0 auto;

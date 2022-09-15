@@ -33,5 +33,6 @@ $(document).ready(function(){
     })
     $('#is-click').click(function(){
         history.back();
-     })
+    })
+
 });
