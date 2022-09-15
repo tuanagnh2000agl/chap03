@@ -2,7 +2,7 @@
 <main class="p-publish">
 		<div class="c-breadcrumb">
 			<div class="l-container">
-			    <div class="breadcrumb"><?php get_breadcrumb(); ?></div>
+			    <div class="breadcrumb"><?php echo get_hansel_and_gretel_breadcrumbs(); ?></div>
 			</div>
 		</div>
 	
