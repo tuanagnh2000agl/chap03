@@ -1289,6 +1289,28 @@ Project
 .c-pagination {
     clear: both;
 }
+
+/* css custom dotcat */
+
+i.c-dotcat.すべて{
+  background: #0078d2;
+}
+i.c-dotcat.お知らせ{
+  background: #1bb7c5;
+}
+i.c-dotcat.税制改正{
+  background: #c4a021;
+}
+i.c-dotcat.掲載情報{
+  background: #416ad3;
+}
+i.c-dotcat.バックナンバー{
+  background: #cccccc;
+}
+i.c-dotcat.税の最新情報{
+  background: #d6772a;
+}
+
 .column-post .c-dotcat {
       margin: 0 5px;
       margin-right: 0px;
@@ -1511,3 +1533,4 @@ Utity
     text-align: center;
   }
 }
+/* css new post */
