@@ -53,9 +53,9 @@
                         $cates = get_categories( $args ); 
                         foreach ( $cates as $cate ) {  ?>
                         <?php if($cate->name == "すべて") : ?>
-                            <li data-content="<?php echo $cate->name ?>" data-color="<?php echo $cate->description ?>" class="active"><?php echo $cate->name ?></li>
+                            <li data-content="<? $cate->name ?>" data-color="<? $cate->description ?>" class="active"><? $cate->name ?></li>
                             <?php else : ?>
-                                <li data-content="<?php echo $cate->name ?>" data-color="<?php echo $cate->description ?>"><?php echo $cate->name ?></li>
+                                <li data-content="<? $cate->name ?>" data-color="<? $cate->description ?>"><? $cate->name ?></li>
                         <?php endif; ?>
                     <?php } ?>
                 </ul>
@@ -72,12 +72,12 @@
                                         <?php $cats = get_the_category(get_the_ID());
                                             foreach ($cats as $cat) {
                                                 ?>
-                                                <i class="c-dotcat <?php echo $cat->name?>"></i>
-                                                <a href="news-cat.html"><?php echo $cat->name?></a>
+                                                <i class="c-dotcat <?= $cat->name?>"></i>
+                                                <a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name?></a>
                                         <?php } ?>
                                     </span>
                                 </div>
-                                <h3 class="titlepost"><a href="news-post.html">2018年12月12日 就職活動中の方向けに京都事務所で事務所見学会を開催します。</a></h3>
+                                <h3 class="titlepost"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
@@ -85,7 +85,7 @@
                         $categories = get_categories();
                         foreach($categories as $category) {   
                         ?>
-                            <ul class="c-listpost" id="<?php echo $category->name ?>">
+                            <ul class="c-listpost" id="<?= $category->name ?>">
                             <?php
                                 $args = [
                                     'post_type' => 'post',
@@ -100,11 +100,11 @@
                                     <div class="c-listpost__info">
                                         <span class="datepost"><?= get_the_date(); ?></span>
                                         <span class="cat">
-                                            <i class="c-dotcat <?php echo $category->name ?>"></i>
-                                            <a href="news-cat.html"><?php echo $category->name; ?></a>
+                                            <i class="c-dotcat <?= $category->name ?>"></i>
+                                            <a href="<?= get_category_link($cat->cat_ID) ?>"><?= $category->name; ?></a>
                                         </span>
                                     </div>
-                                    <h3 class="titlepost"><a href="news-post.html"><?php the_title(); ?></a></h3>
+                                    <h3 class="titlepost"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                 </li>
                             <?php endwhile; wp_reset_postdata();?>
                             </ul>
@@ -144,7 +144,7 @@
                      <li class="c-gridpost__item">
                         <a href="<?php the_permalink(); ?>">
                             <div class="c-gridpost__thumb">
-                                <?php echo get_the_post_thumbnail( $post_id, 'home-thumb', array( 'class' =>'thumnail') ); ?>
+                                <?= get_the_post_thumbnail( $post_id, 'home-thumb', array( 'class' =>'thumnail') ); ?>
                             </div>
                             <p class="datepost"><?php the_date(); ?></p>
                             <h3><?php the_title(); ?></h3>

@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="feature_img">
-		<img src="<?php bloginfo('stylesheet_directory') ?>/assets/img/img_services01.png" alt="Image services01">
+		<?php echo get_the_post_thumbnail( $post_id, 'services', array( 'class' =>'thumnail') ); ?>
 	</div>
 	<div class="p-service__content">
 		<div class="l-container">
@@ -73,26 +73,12 @@
 
 
 			<ul class="c-column">
-			<?php
-				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-				$args = [
-					'post_type' => 'services',
-					'post_status' => 'publish',
-					'posts_per_page'=> 12,
-					'paged' => $paged
-
-				];
-				$the_query = new WP_Query( $args );
-			?>
-			<?php global $wp_query; $wp_query->in_the_loop = true; ?>
-			<?php
-				while ( $the_query->have_posts() ) : $the_query->the_post();
-			?>
-				<li class="c-column__item"><a href="<?php the_permalink() ?>">
-					<?php echo get_the_post_thumbnail( $post_id, 'home-thumb', array( 'class' =>'thumnail') ); ?>
-					<p><?php the_title(); ?></p></a>
-				</li>
-			<?php endwhile; wp_reset_postdata(); ?>
+				<?php if( have_rows('post_service') ): while( have_rows('post_service') ): the_row(); ?>
+					<li class="c-column__item"><a href="<?php the_permalink() ?>">
+						<img src="<?php the_sub_field('icon'); ?>" alt="Image name">
+						<p><?php the_sub_field('title'); ?></p></a>
+					</li>
+				<?php endwhile; endif; ?>
 			</ul>
 			<div class="endcontent">
 				<img src="<?php bloginfo('stylesheet_directory') ?>/assets/img/img_more05.png" alt="Image img more 05">
@@ -105,3 +91,4 @@
 <?php 
 	get_footer();
 ?>	
+

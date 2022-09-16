@@ -140,7 +140,9 @@ function catch_that_image() {
 add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 function wpdocs_theme_setup() {
      add_image_size( 'home-thumb', 1050, 400); 
+     add_image_size( 'services', 1600, 465); 
 }
+
 // pagination
 function pagination_bar($custom_query = null, $paged = null) {
     global $wp_query;
