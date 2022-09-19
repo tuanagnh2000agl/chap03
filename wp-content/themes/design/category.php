@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="c-headpage">
-            <h2 class="c-title">ニュース・お知らせ</h2>
+            <h2 class="c-title">ニュース・お知らせCSC</h2>
         </div>
         <div class="p-news__content">
             <div class="l-container">
@@ -20,7 +20,7 @@
                         $args = [
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'posts_per_page'=> 5,
+                            'posts_per_page'=> 10,
                             'cat' =>  $category->cat_ID,
 							'paged' => $paged,
 

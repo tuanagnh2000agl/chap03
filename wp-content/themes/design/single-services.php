@@ -54,12 +54,12 @@
         <div class="p-service__flow">
             <div class="l-container2">
                 <h3 class="p-service__title">サービスの流れ</h3>
-                <table>
                 <?php
                 $i = 1;
                 while( have_rows('steps') ) : the_row(); 
                 $sub_title = get_sub_field('step-tite');
                 ?>
+                <table>
                 <tbody>
                     <tr>
                     <th>STEP<?php echo $i ?></th>
@@ -79,10 +79,8 @@
                         ?> 
                     </tr>
                 </tbody>
-
-                <?php $i++;  endwhile;?> 
-                
                 </table>
+                <?php $i++;  endwhile;?> 
             </div>
         </div>
         <div class="p-service__division">

@@ -39,6 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="<?php bloginfo('template_directory') ?>/assets/js/themes.js?ver=99999"></script>
+    <script src="<?php bloginfo('template_directory') ?>/assets/js/scripts.js?ver=99999"></script>
 </body>
 
 </html>

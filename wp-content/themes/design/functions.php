@@ -1,22 +1,22 @@
 <?php
 /* Custom Post Type Start */
-// Product Custom Post Type
-function product_init() {
-    // set up product labels
+// services Custom Post Type
+function services_init() {
+    // set up services labels
     $labels = array(
-        'name' => 'Products',
-        'singular_name' => 'Product',
-        'add_new' => 'Add New Product',
-        'add_new_item' => 'Add New Product',
-        'edit_item' => 'Edit Product',
-        'new_item' => 'New Product',
-        'all_items' => 'All Products',
-        'view_item' => 'View Product',
-        'search_items' => 'Search Products',
-        'not_found' =>  'No Products Found',
-        'not_found_in_trash' => 'No Products found in Trash', 
+        'name' => 'services',
+        'singular_name' => 'services',
+        'add_new' => 'Add New services',
+        'add_new_item' => 'Add New services',
+        'edit_item' => 'Edit services',
+        'new_item' => 'New services',
+        'all_items' => 'All services',
+        'view_item' => 'View services',
+        'search_items' => 'Search services',
+        'not_found' =>  'No services Found',
+        'not_found_in_trash' => 'No services found in Trash', 
         'parent_item_colon' => '',
-        'menu_name' => 'Products',
+        'menu_name' => 'services',
     );
     
     // register post type
@@ -27,9 +27,8 @@ function product_init() {
         'show_ui' => true,
         'capability_type' => 'post',
         'hierarchical' => false,
-        'rewrite' => array('slug' => 'product'),
+        'rewrite' => array('slug' => 'services'),
         'query_var' => true,
-        'menu_icon' => 'dashicons-randomize',
         'supports' => array(
             'title',
             'editor',
@@ -43,36 +42,36 @@ function product_init() {
             'page-attributes'
         )
     );
-    register_post_type( 'product', $args );
+    register_post_type( 'services', $args );
     
     // register taxonomy
-    register_taxonomy('product_category', 'product', array('hierarchical' => true, 'label' => 'Category', 'query_var' => true, 'rewrite' => array( 'slug' => 'product-category' )));
+    register_taxonomy('services_category', 'services', array('hierarchical' => true, 'label' => 'Category', 'query_var' => true, 'rewrite' => array( 'slug' => 'services-category' )));
 }
-add_action( 'init', 'product_init' );
+add_action( 'init', 'services_init' );
 
 /* Custom Post Type services */
-function create_posttype() {
-    register_post_type(
-        'services',
-        array(
-            'label' => 'services',
-            'labels' => array(
-                'all_items' => 'services all',
-                'add_new' => 'Add new',
-                'add_new_item' => 'Add new service',
-                'edit_item' => 'Edit',
-                'new_item' => 'new item',
-                'view_item' => 'view',
-                'search_items' => 'search',
-                'not_found' => 'not found',
-                'not_found_in_trash' => 'not found in trash',
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'supports' => [ 'title', 'thumbnail', 'editor' ],
-        ));
-    }
-add_action( 'init', 'create_posttype' );
+// function create_posttype() {
+//     register_post_type(
+//         'services',
+//         array(
+//             'label' => 'services',
+//             'labels' => array(
+//                 'all_items' => 'services all',
+//                 'add_new' => 'Add new',
+//                 'add_new_item' => 'Add new service',
+//                 'edit_item' => 'Edit',
+//                 'new_item' => 'new item',
+//                 'view_item' => 'view',
+//                 'search_items' => 'search',
+//                 'not_found' => 'not found',
+//                 'not_found_in_trash' => 'not found in trash',
+//             ),
+//             'public' => true,
+//             'has_archive' => true,
+//             'supports' => [ 'title', 'thumbnail', 'editor' ],
+//         ));
+// }
+// add_action( 'init', 'create_posttype' );
 /* Custom Post Type publish */
 function create_posttype_publish() {
     register_post_type(
@@ -385,5 +384,35 @@ function get_hansel_and_gretel_breadcrumbs()
 
     return $breadcrumb_output_link;
 }
+
+function load_scripts(){
+    wp_enqueue_script('ajax', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), NULL, true);
+    wp_localize_script(
+        'ajax',
+        'wpAjax',
+        array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
+};
+
+add_action('wp_enqueue_scripts', 'load_scripts');
+
+// 
+add_action('wp_ajax_nopriv_filter', 'filter_ajax');
+add_action('wp_ajax_filter', 'filter_ajax');
+function filter_ajax(){ 
+    $category = $_POST['category'];
+    $args = array(
+        'post_type' => 'services', 
+        'posts_per_page' => -1 
+    );
+    if(isset($category)){
+        $args['category__in'] = array($category);
+    }
+
+    $query = new WP_query($args); 
+    while ($query->have_posts()) : $query->the_post(); 
+    the_title('<h2>', '</h2>');  
+    endwhile; wp_reset_postdata(); 
+}
+
 ?>
 

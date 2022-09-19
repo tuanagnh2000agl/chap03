@@ -53,9 +53,9 @@
                         $cates = get_categories( $args ); 
                         foreach ( $cates as $cate ) {  ?>
                         <?php if($cate->name == "すべて") : ?>
-                            <li data-content="<? $cate->name ?>" data-color="<? $cate->description ?>" class="active"><? $cate->name ?></li>
+                            <li data-content="<?php echo $cate->name ?>" data-color="<?php echo $cate->description ?>" class="active"><?php echo $cate->name ?></li>
                             <?php else : ?>
-                                <li data-content="<? $cate->name ?>" data-color="<? $cate->description ?>"><? $cate->name ?></li>
+                                <li data-content="<?php echo $cate->name ?>" data-color="<?php echo $cate->description ?>"><?php echo $cate->name ?></li>
                         <?php endif; ?>
                     <?php } ?>
                 </ul>
@@ -72,8 +72,8 @@
                                         <?php $cats = get_the_category(get_the_ID());
                                             foreach ($cats as $cat) {
                                                 ?>
-                                                <i class="c-dotcat <?= $cat->name?>"></i>
-                                                <a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name?></a>
+                                                <i class="c-dotcat <?php echo $cat->name?>"></i>
+                                                <a href="<?= get_category_link($cat->cat_ID) ?>"><?php echo $cat->name?></a>
                                         <?php } ?>
                                     </span>
                                 </div>
@@ -85,7 +85,7 @@
                         $categories = get_categories();
                         foreach($categories as $category) {   
                         ?>
-                            <ul class="c-listpost" id="<?= $category->name ?>">
+                            <ul class="c-listpost" id="<?php echo $category->name ?>">
                             <?php
                                 $args = [
                                     'post_type' => 'post',
@@ -132,6 +132,7 @@
                             'post_type' => 'publish',
                             'post_status' => 'publish',
                             'posts_per_page'=> 4,
+                            'orderby' => 'rand',
                             'paged' => $paged
 
                         ];

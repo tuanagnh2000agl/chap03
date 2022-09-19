@@ -25,7 +25,7 @@
 						<?php endif; ?>
                     <?php } ?>
                 </ul>
-				<div class="c-tabs__content">
+				<div class="c-tabs__content">            
                     <ul class="c-listpost active" id="すべて">
                         <?php $category = get_category(get_query_var('cat'));
                         $getposts = new WP_query(); $getposts->query('post_status=publish&showposts=5'); ?>
@@ -47,7 +47,7 @@
                             </li>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </ul>
-                    <?php                 
+                        <?php                 
                         $categories = get_categories();
                         foreach($categories as $category) {   
                         ?>
