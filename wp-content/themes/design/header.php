@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/assets/css/404.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/AjaxPagination/Ajax_pagination.css">
     <link rel="shortcut icon" href="<?php bloginfo('template_directory') ?>/assets/img/favicon.png" type="image/x-icon">
 </head>
 

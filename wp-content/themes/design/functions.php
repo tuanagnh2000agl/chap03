@@ -401,18 +401,31 @@ add_action('wp_ajax_filter', 'filter_ajax');
 function filter_ajax(){ 
     $category = $_POST['category'];
     $args = array(
+    	'post_status' => 'publish', 
         'post_type' => 'services', 
-        'posts_per_page' => -1 
+        'posts_per_page' => -1 ,
+        'tax_query' => array(array(
+            'taxonomy' => 'services_category',
+            'terms' => $category,
+            'field' => 'term_id'
+        )),
     );
-    if(isset($category)){
-        $args['category__in'] = array($category);
-    }
 
     $query = new WP_query($args); 
     while ($query->have_posts()) : $query->the_post(); 
-    the_title('<h2>', '</h2>');  
+    echo the_title();
+    var_dump(the_row());
+    echo get_post_type();
+    if( have_rows('post_service') ): while( have_rows('post_service') ): the_row(); 
+							echo "<li class='c-column__item'><a href=" . get_the_permalink(). ">" ;
+							echo "<img src=" . the_sub_field('icon') ."  alt='Imagename'>";
+							echo "<p> ". the_sub_field('title') . "</p></a>";
+                            echo "</li>";
+	    endwhile; 
+    endif; 
     endwhile; wp_reset_postdata(); 
 }
 
-?>
+
+include 'AjaxPagination/ajax_pagination_wp.php';
 

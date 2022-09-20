@@ -19,6 +19,5 @@
 			<a href="<? bloginfo('url') ?>/news">TOPに戻る</a>
 		</div>
 	</div>
-	<?php the_content(); ?>
 </main>
 <?php get_footer(); ?>
